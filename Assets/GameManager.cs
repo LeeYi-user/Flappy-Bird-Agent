@@ -7,10 +7,17 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    public int score;
+    private int score;
 
-    private void Update()
+    public void AddScore()
     {
+        score++;
+        scoreText.text = score.ToString();
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
         scoreText.text = score.ToString();
     }
 }

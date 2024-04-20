@@ -17,7 +17,7 @@ public class FlappyBirdAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        gameManager.score = 0;
+        gameManager.ResetScore();
         pipeManager.ClearPipe();
 
         rb.velocity = Vector2.zero;
@@ -27,7 +27,7 @@ public class FlappyBirdAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(rb.velocity.y); // bird velocity y
-        sensor.AddObservation((transform.localPosition.y - 0.28f + (1.88f / 2f)) / 1.88f); // bird height normalized
+        sensor.AddObservation((transform.localPosition.y + 0.66f) / 1.88f); // bird height normalized
 
         if (pipeManager.frontPipes.Count > 0)
         {

@@ -27,7 +27,7 @@ public class Pipe : MonoBehaviour
         inFront = false;
         pipeManager.frontPipes.RemoveAt(0);
         pipeManager.backPipes.Add(gameObject);
-        gameManager.score++;
+        gameManager.AddScore();
     }
 
     private void OnDestroy()
