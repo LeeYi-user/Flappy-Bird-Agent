@@ -5,8 +5,17 @@ using UnityEngine;
 public class Pipe : MonoBehaviour
 {
     public GameManager gameManager;
+    public PipeManager pipeManager;
 
     private float speed = 0.65f;
+
+    bool inFront = true;
+
+    private void Start()
+    {
+        pipeManager.frontPipes.Add(gameObject);
+        Destroy(gameObject, 5f);
+    }
 
     private void Update()
     {
@@ -15,9 +24,21 @@ public class Pipe : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        inFront = false;
+        pipeManager.frontPipes.RemoveAt(0);
+        pipeManager.backPipes.Add(gameObject);
+        gameManager.score++;
+    }
+
+    private void OnDestroy()
+    {
+        if (inFront)
         {
-            gameManager.score++;
+            pipeManager.frontPipes.RemoveAt(0);
+        }
+        else
+        {
+            pipeManager.backPipes.RemoveAt(0);
         }
     }
 }

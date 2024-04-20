@@ -7,9 +7,10 @@ public class PipeManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject pipe;
 
-    private List<GameObject> pipes = new List<GameObject>();
+    public List<GameObject> frontPipes = new List<GameObject>();
+    public List<GameObject> backPipes = new List<GameObject>();
 
-    private float heightRange = 0.45f;
+    private float heightRange = 0.3f;
     private float maxTime = 1.5f;
     private float timer;
 
@@ -20,7 +21,7 @@ public class PipeManager : MonoBehaviour
 
     private void Update()
     {
-        if (timer > maxTime)
+        if (timer >= maxTime)
         {
             SpawnPipe();
             timer = 0;
@@ -31,21 +32,22 @@ public class PipeManager : MonoBehaviour
 
     private void SpawnPipe()
     {
-        Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange));
+        Vector3 spawnPos = transform.position + new Vector3(0f, Random.Range(-heightRange, heightRange), 0f);
         GameObject pipeGO = Instantiate(pipe, spawnPos, Quaternion.identity);
         pipeGO.GetComponent<Pipe>().gameManager = gameManager;
-
-        pipes.Add(pipeGO);
-        Destroy(pipeGO, 5f);
+        pipeGO.GetComponent<Pipe>().pipeManager = this;
     }
 
     public void ClearPipe()
     {
-        foreach (GameObject pipe in pipes)
+        foreach (GameObject pipe in frontPipes)
         {
             Destroy(pipe);
         }
 
-        pipes.Clear();
+        foreach (GameObject pipe in backPipes)
+        {
+            Destroy(pipe);
+        }
     }
 }

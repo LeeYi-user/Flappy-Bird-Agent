@@ -11,8 +11,7 @@ public class FlappyBirdAgent : Agent
     [SerializeField] private PipeManager pipeManager;
     [SerializeField] private Rigidbody2D rb;
 
-    private float velocity = 2.5f;
-    private float rotationSpeed = 10f;
+    private float velocity = 2f;
 
     private bool isJumpInputDown;
 
@@ -23,12 +22,21 @@ public class FlappyBirdAgent : Agent
 
         rb.velocity = Vector2.zero;
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        sensor.AddObservation(rb.velocity.y); // bird velocity y
+        sensor.AddObservation((transform.localPosition.y - 0.28f + (1.88f / 2f)) / 1.88f); // bird height normalized
 
+        if (pipeManager.frontPipes.Count > 0)
+        {
+            sensor.AddObservation((pipeManager.frontPipes[0].transform.localPosition.x - transform.localPosition.x) / 1.44f); // pipe distance normalized
+        }
+        else
+        {
+            sensor.AddObservation(0f);
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -58,11 +66,6 @@ public class FlappyBirdAgent : Agent
         {
             isJumpInputDown = true;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        transform.rotation = Quaternion.Euler(0f, 0f, rb.velocity.y * rotationSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
