@@ -45,7 +45,8 @@ public class FlappyBirdAgent : Agent
 
         if (move == 1)
         {
-            rb.velocity = Vector2.up * velocity;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
         }
 
         AddReward(0.1f);
