@@ -2,24 +2,6 @@
     "FlappyBird": {
         "checkpoints": [
             {
-                "steps": 361866,
-                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-361866.onnx",
-                "reward": null,
-                "creation_time": 1713636096.6442556,
-                "auxillary_file_paths": [
-                    "results\\FlappyBird\\FlappyBird\\FlappyBird-361866.pt"
-                ]
-            },
-            {
-                "steps": 499997,
-                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-499997.onnx",
-                "reward": 182.40001583099365,
-                "creation_time": 1713682916.6808157,
-                "auxillary_file_paths": [
-                    "results\\FlappyBird\\FlappyBird\\FlappyBird-499997.pt"
-                ]
-            },
-            {
                 "steps": 500061,
                 "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-500061.onnx",
                 "reward": 182.40001583099365,
@@ -27,15 +9,51 @@
                 "auxillary_file_paths": [
                     "results\\FlappyBird\\FlappyBird\\FlappyBird-500061.pt"
                 ]
+            },
+            {
+                "steps": 999942,
+                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-999942.onnx",
+                "reward": null,
+                "creation_time": 1713686398.4498127,
+                "auxillary_file_paths": [
+                    "results\\FlappyBird\\FlappyBird\\FlappyBird-999942.pt"
+                ]
+            },
+            {
+                "steps": 1000006,
+                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-1000006.onnx",
+                "reward": null,
+                "creation_time": 1713686398.5393453,
+                "auxillary_file_paths": [
+                    "results\\FlappyBird\\FlappyBird\\FlappyBird-1000006.pt"
+                ]
+            },
+            {
+                "steps": 1499998,
+                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-1499998.onnx",
+                "reward": null,
+                "creation_time": 1713690230.665282,
+                "auxillary_file_paths": [
+                    "results\\FlappyBird\\FlappyBird\\FlappyBird-1499998.pt"
+                ]
+            },
+            {
+                "steps": 1550853,
+                "file_path": "results\\FlappyBird\\FlappyBird\\FlappyBird-1550853.onnx",
+                "reward": null,
+                "creation_time": 1713690409.424945,
+                "auxillary_file_paths": [
+                    "results\\FlappyBird\\FlappyBird\\FlappyBird-1550853.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 500061,
+            "steps": 1550853,
             "file_path": "results\\FlappyBird\\FlappyBird.onnx",
-            "reward": 182.40001583099365,
-            "creation_time": 1713682916.8040576,
+            "reward": null,
+            "creation_time": 1713690409.424945,
             "auxillary_file_paths": [
-                "results\\FlappyBird\\FlappyBird\\FlappyBird-500061.pt"
+                "results\\FlappyBird\\FlappyBird\\FlappyBird-1550853.pt"
             ]
         }
     },
