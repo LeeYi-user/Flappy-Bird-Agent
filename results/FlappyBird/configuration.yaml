@@ -45,10 +45,10 @@ behaviors:
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: null
+  env_path: Builds/Flappy Bird Agent
   env_args: null
   base_port: 5005
-  num_envs: 1
+  num_envs: 8
   num_areas: 1
   timeout_wait: 60
   seed: -1
@@ -69,7 +69,7 @@ checkpoint_settings:
   run_id: FlappyBird
   initialize_from: null
   load_model: false
-  resume: true
+  resume: false
   force: false
   train_model: false
   inference: false
