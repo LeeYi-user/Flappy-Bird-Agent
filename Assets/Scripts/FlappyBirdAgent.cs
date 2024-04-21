@@ -18,7 +18,7 @@ public class FlappyBirdAgent : Agent
     public override void OnEpisodeBegin()
     {
         gameManager.ResetScore();
-        pipeManager.ClearPipe();
+        pipeManager.ResetPipes();
 
         rb.velocity = Vector2.zero;
         transform.localPosition = Vector3.zero;
@@ -45,7 +45,7 @@ public class FlappyBirdAgent : Agent
 
         if (move == 1)
         {
-            rb.velocity = Vector2.zero;
+            rb.Sleep();
             rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
         }
 

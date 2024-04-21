@@ -12,12 +12,7 @@ public class PipeManager : MonoBehaviour
 
     private float heightRange = 0.3f;
     private float maxTime = 1.5f;
-    private float timer;
-
-    private void Start()
-    {
-        SpawnPipe();
-    }
+    private float timer = 1.5f;
 
     private void Update()
     {
@@ -38,7 +33,7 @@ public class PipeManager : MonoBehaviour
         pipeGO.GetComponent<Pipe>().pipeManager = this;
     }
 
-    public void ClearPipe()
+    public void ResetPipes()
     {
         foreach (GameObject pipe in frontPipes)
         {
@@ -49,5 +44,7 @@ public class PipeManager : MonoBehaviour
         {
             Destroy(pipe);
         }
+
+        timer = 1.5f;
     }
 }
