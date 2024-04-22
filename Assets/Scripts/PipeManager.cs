@@ -5,32 +5,33 @@ using UnityEngine;
 public class PipeManager : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private GameObject pipe;
+    [SerializeField] private GameObject pipePrefab;
 
     public List<GameObject> frontPipes = new List<GameObject>();
     public List<GameObject> backPipes = new List<GameObject>();
 
     private float heightRange = 0.3f;
     private float maxTime = 1.5f;
-    private float timer = 1.5f;
+    private float timer;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (timer >= maxTime)
+        timer -= Time.deltaTime;
+
+        if (timer < 0f)
         {
             SpawnPipe();
-            timer = 0;
+            timer = maxTime;
         }
-
-        timer += Time.deltaTime;
     }
 
     private void SpawnPipe()
     {
         Vector3 spawnPos = transform.position + new Vector3(0f, Random.Range(-heightRange, heightRange), 0f);
-        GameObject pipeGO = Instantiate(pipe, spawnPos, Quaternion.identity);
-        pipeGO.GetComponent<Pipe>().gameManager = gameManager;
-        pipeGO.GetComponent<Pipe>().pipeManager = this;
+        GameObject pipe = Instantiate(pipePrefab, spawnPos, Quaternion.identity, transform);
+        pipe.GetComponent<Pipe>().gameManager = gameManager;
+        pipe.GetComponent<Pipe>().pipeManager = this;
+        frontPipes.Add(pipe);
     }
 
     public void ResetPipes()
@@ -40,11 +41,15 @@ public class PipeManager : MonoBehaviour
             Destroy(pipe);
         }
 
+        frontPipes.Clear();
+
         foreach (GameObject pipe in backPipes)
         {
             Destroy(pipe);
         }
 
-        timer = 1.5f;
+        backPipes.Clear();
+
+        timer = 0f;
     }
 }

@@ -9,36 +9,21 @@ public class Pipe : MonoBehaviour
 
     private float speed = 0.65f;
 
-    bool inFront = true;
-
-    private void Start()
-    {
-        pipeManager.frontPipes.Add(gameObject);
-        Destroy(gameObject, 5f);
-    }
-
-    private void Update()
+    private void FixedUpdate()
     {
         transform.localPosition += Vector3.left * speed * Time.deltaTime;
+
+        if (transform.localPosition.x < -2.29f)
+        {
+            Destroy(gameObject);
+            pipeManager.backPipes.RemoveAt(0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        inFront = false;
+        gameManager.AddScore();
         pipeManager.frontPipes.RemoveAt(0);
         pipeManager.backPipes.Add(gameObject);
-        gameManager.AddScore();
-    }
-
-    private void OnDestroy()
-    {
-        if (inFront)
-        {
-            pipeManager.frontPipes.RemoveAt(0);
-        }
-        else
-        {
-            pipeManager.backPipes.RemoveAt(0);
-        }
     }
 }

@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 3321130263023208503}
-  pipe: {fileID: 9142213768072085039, guid: 9f80cdca83c08114d93b522dea690455, type: 3}
+  pipePrefab: {fileID: 9142213768072085039, guid: 9f80cdca83c08114d93b522dea690455, type: 3}
   frontPipes: []
   backPipes: []
 --- !u!1 &5186937633805960960

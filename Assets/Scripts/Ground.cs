@@ -16,7 +16,7 @@ public class Ground : MonoBehaviour
         startSize = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         spriteRenderer.size = new Vector2(spriteRenderer.size.x + speed * Time.deltaTime, spriteRenderer.size.y);
 
