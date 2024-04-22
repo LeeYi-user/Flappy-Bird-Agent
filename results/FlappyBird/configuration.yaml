@@ -48,7 +48,7 @@ env_settings:
   env_path: Builds/Flappy Bird Agent
   env_args: null
   base_port: 5005
-  num_envs: 8
+  num_envs: 16
   num_areas: 1
   timeout_wait: 60
   seed: -1
